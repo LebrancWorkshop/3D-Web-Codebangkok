@@ -27,6 +27,14 @@ const boxMaterial = new THREE.MeshPhongMaterial({map: boxTexture});
 const boxMesh = new THREE.Mesh(boxGeometry, boxMaterial);
 scene.add(boxMesh);
 
+// Object: Cone
+const coneTexture = textureLoader.load("src/textures/crate.gif");
+const coneGeometry = new THREE.ConeGeometry(5, 20, 32);
+const coneMaterial = new THREE.MeshPhongMaterial({map: coneTexture});
+const coneMesh = new THREE.Mesh(coneGeometry, coneMaterial);
+coneMesh.translateX(-30); 
+scene.add(coneMesh);
+
 // Camera Transition
 camera.translateZ(30); 
 
@@ -34,6 +42,9 @@ camera.translateZ(30);
 function animate() {
 	boxMesh.rotateX(0.005);
 	boxMesh.rotateY(0.01);
+
+	coneMesh.rotateX(-0.005);
+	coneMesh.rotateY(0.01); 
 
 	// Rendering. 
 	renderer.render(scene, camera); 
