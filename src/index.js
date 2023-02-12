@@ -35,6 +35,14 @@ const coneMesh = new THREE.Mesh(coneGeometry, coneMaterial);
 coneMesh.translateX(-30); 
 scene.add(coneMesh);
 
+// Object: Cylinder
+const cylinderTexture = textureLoader.load("src/textures/crate.gif");
+const cylinderGeometry = new THREE.CylinderGeometry(5, 5, 16, 32);
+const cylinderMaterial = new THREE.MeshPhongMaterial({map: cylinderTexture});
+const cylinderMesh = new THREE.Mesh(cylinderGeometry, cylinderMaterial);
+cylinderMesh.translateX(30);
+scene.add(cylinderMesh); 
+
 // Camera Transition
 camera.translateZ(30); 
 
@@ -45,6 +53,9 @@ function animate() {
 
 	coneMesh.rotateX(-0.005);
 	coneMesh.rotateY(0.01); 
+
+	cylinderMesh.rotateX(0.005);
+	cylinderMesh.rotateY(-0.01); 
 
 	// Rendering. 
 	renderer.render(scene, camera); 
