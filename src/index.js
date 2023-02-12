@@ -1,6 +1,9 @@
 import * as THREE from './three.module.js';
 import { OrbitControls } from './OrbitControls.js'; 
 
+// Event Listener
+window.addEventListener("resize", onWindowResize); 
+
 // Setup: Scene, Camera, Renderer
 const scene = new THREE.Scene();
 const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000); 
@@ -79,5 +82,11 @@ function animate() {
 	// Rendering. 
 	controls.update(); 
 	renderer.render(scene, camera); 
+}
+
+function onWindowResize() {
+	camera.aspect = window.innerWidth / window.innerHeight;
+	camera.updateProjectionMatrix();
+	renderer.setSize(window.innerWidth, window.innerHeight);
 }
 
