@@ -1,5 +1,6 @@
 import * as THREE from './three.module.js';
 import { OrbitControls } from './OrbitControls.js'; 
+import { VRButton } from './VRButton.js';
 
 // Event Listener
 window.addEventListener("resize", onWindowResize); 
@@ -17,6 +18,11 @@ scene.background = new THREE.Color(0xffd359);
 
 // Orbit Control
 const controls = new OrbitControls(camera, renderer.domElement); 
+
+// VR Control
+const vrButton = VRButton.createButton(renderer);
+document.body.appendChild(vrButton);
+renderer.xr.enabled = true; 
 
 // Object: Light
 const ambientLight = new THREE.AmbientLight(0xbda355);
